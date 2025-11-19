@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="box">
+        <h2>Login</h2>
+
+        <input id="nome" type="text" placeholder="Nome completo">
+        <input id="email" type="email" placeholder="E-mail">
+        <input id="senha" type="password" placeholder="Senha">
+
+        <p>Entrar sem login? 
+            <a href="index.html" onclick="entrarSemLogin()">Clique aqui</a>
+        </p>
+
+        <button id="entrar" onclick="logar()">Entrar</button>
+        <button id="cadastrar" onclick="irParaCadastro()">Cadastrar</button>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
