@@ -11,7 +11,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renatohost/Site-final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Renatohost/Site-final/issues"
+  },
+  "homepage": "https://github.com/Renatohost/Site-final#readme"
 }
