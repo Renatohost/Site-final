@@ -65,7 +65,9 @@ app.post("/usuarios", (req, res) => {
   const { nome, email, senha } = req.body;
 
   if (!nome || !email || !senha) {
-    return res.status(400).json({ message: "Preencha todos os campos" });
+    return res.status(400).json({
+      message: "Preencha todos os campos"
+    });
   }
 
   db.run(
@@ -74,12 +76,19 @@ app.post("/usuarios", (req, res) => {
     function (err) {
       if (err) {
         if (err.message.includes("UNIQUE")) {
-          return res.status(400).json({ message: "E-mail já cadastrado" });
+          return res.status(400).json({
+            message: "E-mail já cadastrado"
+          });
         }
-        return res.status(500).json({ message: "Erro ao cadastrar usuário" });
+
+        return res.status(500).json({
+          message: "Erro ao cadastrar usuário"
+        });
       }
 
-      res.json({ message: "Usuário cadastrado com sucesso!" });
+      res.json({
+        message: "Usuário cadastrado com sucesso!"
+      });
     }
   );
 });
@@ -89,7 +98,9 @@ app.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
   if (!email || !senha) {
-    return res.status(400).json({ message: "Preencha todos os campos" });
+    return res.status(400).json({
+      message: "Preencha todos os campos"
+    });
   }
 
   db.get(
@@ -97,11 +108,15 @@ app.post("/login", (req, res) => {
     [email, senha],
     (err, row) => {
       if (err) {
-        return res.status(500).json({ message: "Erro no servidor" });
+        return res.status(500).json({
+          message: "Erro no servidor"
+        });
       }
 
       if (!row) {
-        return res.status(401).json({ message: "Usuário ou senha inválidos" });
+        return res.status(401).json({
+          message: "Usuário ou senha inválidos"
+        });
       }
 
       res.json({
@@ -125,7 +140,9 @@ app.post("/estabelecimentos", (req, res) => {
   const { nome, tipo, latitude, longitude } = req.body;
 
   if (!nome || !latitude || !longitude) {
-    return res.status(400).json({ message: "Dados incompletos" });
+    return res.status(400).json({
+      message: "Dados incompletos"
+    });
   }
 
   db.run(
@@ -133,10 +150,14 @@ app.post("/estabelecimentos", (req, res) => {
     [nome, tipo, latitude, longitude],
     function (err) {
       if (err) {
-        return res.status(500).json({ message: "Erro ao salvar local" });
+        return res.status(500).json({
+          message: "Erro ao salvar local"
+        });
       }
 
-      res.json({ message: "Estabelecimento cadastrado!" });
+      res.json({
+        message: "Estabelecimento cadastrado!"
+      });
     }
   );
 });
@@ -145,7 +166,9 @@ app.post("/estabelecimentos", (req, res) => {
 app.get("/estabelecimentos", (req, res) => {
   db.all("SELECT * FROM estabelecimentos", [], (err, rows) => {
     if (err) {
-      return res.status(500).json({ message: "Erro ao buscar locais" });
+      return res.status(500).json({
+        message: "Erro ao buscar locais"
+      });
     }
 
     res.json(rows);
